@@ -1,0 +1,81 @@
+
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // Your code here
+        // return vector with correct order of elements
+        
+        int l1 = a.size();
+        int l2 = b.size();
+        vector<int>ans;
+        int i=0;
+        int j=0;
+        
+        if(a[i]<=b[i])
+        {
+            ans.push_back(a[i]);
+            
+            i++;
+        }
+        else
+        {
+            ans.push_back(b[j]);
+            
+            j++;
+            
+        }
+        while(i<l1 && j<l2)
+        {
+            if(a[i]<= b[j] && ans[ans.size()-1]!=a[i] )
+            {
+                ans.push_back(a[i]);
+               
+                i++;
+            }
+            else if(a[i]<=b[j] && ans[ans.size()-1]==a[i])
+            {
+                i++;
+            }
+            else if(b[j]<a[i] && ans[ans.size()-1]!=b[j])
+            {
+                ans.push_back(b[j]);
+               
+                j++;
+            }
+            else if(b[j]<a[i] && ans[ans.size()-1]==b[j])
+            {
+                j++;
+            }
+        }
+        while(i<l1)
+        {
+                if(ans[ans.size()-1]!=a[i])
+                {
+                     ans.push_back(a[i]);
+                       
+                        i++;
+                    
+                }
+                else
+                {
+                    i++;
+                }
+               
+        }
+         while(j<l2)
+        {
+                if(ans[ans.size()-1]!=b[j])
+                {
+                     ans.push_back(b[j]);
+                     
+                        j++;
+                    
+                }
+                else
+                {
+                    j++;
+                }
+               
+        }
+        return ans;
+    }
+
+
