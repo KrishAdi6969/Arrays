@@ -1,0 +1,25 @@
+int lenOfLongestSubarr(vector<int>& arr, int k) {
+        // code here
+        map<int,int>mp;
+        mp[0]=-1;
+        int n = arr.size();
+        int sum =0;
+        int len =0;
+        for(int i=0;i<n;i++)
+        {
+            sum = sum+arr[i];
+            if(mp.find(sum-k)==mp.end())
+            {
+                mp[sum]=i;
+            }
+            else
+            {
+                if((i-mp[sum-k])> len)
+                {
+                    len = i-mp[sum-k];
+                }
+            }
+        }
+        return len;
+        
+    }
