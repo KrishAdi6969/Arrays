@@ -1,4 +1,5 @@
-int lenOfLongestSubarr(vector<int>& arr, int k) {
+
+    int lenOfLongestSubarr(vector<int>& arr, int k) {
         // code here
         map<int,int>mp;
         mp[0]=-1;
@@ -8,11 +9,11 @@ int lenOfLongestSubarr(vector<int>& arr, int k) {
         for(int i=0;i<n;i++)
         {
             sum = sum+arr[i];
-            if(mp.find(sum-k)==mp.end())
+            if(mp.find(sum)==mp.end())
             {
                 mp[sum]=i;
             }
-            else
+            if(mp.find(sum-k)!=mp.end())
             {
                 if((i-mp[sum-k])> len)
                 {
@@ -23,3 +24,8 @@ int lenOfLongestSubarr(vector<int>& arr, int k) {
         return len;
         
     }
+
+
+
+
+// } Driver Code Ends
