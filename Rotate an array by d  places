@@ -1,0 +1,24 @@
+
+    void rotate(vector<int>& nums, int k) {
+        int n ;
+        n = nums.size();
+        int ro = k % n;
+        int left =0;
+        int right = n-ro;
+        vector<int>ans(n);
+        for(int i=0;i<n;i++)
+        {
+            if(right<n)
+            {
+                ans[i] = nums[right];
+                right++;
+            }
+            else
+            {
+                ans[i] = nums[left];
+                left++;
+            }
+        }
+        nums = ans;
+        return;
+    }
