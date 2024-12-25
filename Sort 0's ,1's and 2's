@@ -1,0 +1,19 @@
+
+    void sortColors(vector<int>& nums) {
+        map<int,int>mp;
+        int n = nums.size();
+        for(int i=0;i<n;i++)
+        {
+            mp[nums[i]]++;
+        }
+        vector<int>ans;
+        int j=0;
+        for(auto i:mp)
+        {
+            int element = i.first;
+            int count  = i.second;
+            ans.insert(ans.end(),count,element);
+        }
+        nums=ans;
+        return;
+    }
