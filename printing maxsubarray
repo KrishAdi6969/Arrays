@@ -1,0 +1,54 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <climits>
+#include <vector>
+using namespace std;
+vector<int> maxsubarray(int a[],int n)
+{
+    
+    int sum =0;
+    int maxsum =0;
+    int lower =0;
+    int higher =0;
+    vector<int>ans;
+    for(int i=0;i<n;i++)
+    {
+        sum = sum +a[i];
+        if(sum>maxsum)
+        {
+            maxsum = sum;
+            higher =i;
+        }
+    }
+    sum =0;
+    int minsum = INT_MAX;
+    for(int i=0;i<=higher;i++)
+    {
+        sum = sum + a[i];
+        if(sum>=0 && sum < minsum)
+        {
+            minsum = sum;
+            lower = i;
+        }
+        
+        
+    }
+    
+    for(int i=lower;i<=higher;i++)
+    {
+        ans.push_back(a[i]);
+    }
+    return ans;
+}
+int main() {
+    // Write C++ code here
+    int a[1]={1};
+    vector<int>ans = maxsubarray(a,1);
+    for(const auto i:ans)
+    {
+        cout<<i<<" ";
+    }
+    
+
+    return 0;
+}
