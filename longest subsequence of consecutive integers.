@@ -1,43 +1,14 @@
+set<int> s(arr.begin(), arr.end()); // Insert all elements in the set
+        int count = 1, maxCount = 1;
+        int prev = *s.begin(); // Initialize with the first element of the set
 
-
-    // Function to return length of longest subsequence of consecutive integers.
-    int longestConsecutive(vector<int>& arr) {
-        // Your code here
-        unordered_map<int,bool>mp;
-        int n = arr.size();
-        for(int i=0;i<n;i++)
-        {
-            mp[arr[i]]=false;
+        for (const auto& i : s) {
+            if (i == prev + 1) {
+                count++;
+            } else {
+                maxCount = max(maxCount, count);
+                count = 1; // Reset count for a new sequence
+            }
+            prev = i; // Update prev to current element
         }
-        int longest_length = 0;
-        
-        for(int i=0;i<n;i++)
-        {
-            int current_length = 1;
-            int num = arr[i];
-            int next = num+1;
-            while(mp.find(next)!=mp.end() && mp[next]==false)
-            {
-                current_length++;
-                mp[next]=true;
-                next++;
-            }
-            
-            int before = num-1;
-            while(mp.find(before)!=mp.end() && mp[before]==false)
-            {
-             current_length++;
-                mp[before]=true;
-                before--;   
-            }
-            if(current_length>longest_length)
-            {
-                longest_length = current_length;
-            }
-        }
-        return longest_length;
-        
-        
-    }
-};
-
+        return max(maxCount, count); 
